@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/link-passhref */
 import React, { useRef, useState } from "react";
 import {
   Box,

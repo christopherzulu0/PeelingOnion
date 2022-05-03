@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React, { Ref } from "react";
 import { Flex, Stack, Button, Image } from "@chakra-ui/react";
 

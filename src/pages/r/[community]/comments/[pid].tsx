@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { useRouter } from "next/router";
