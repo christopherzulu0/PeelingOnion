@@ -41,7 +41,7 @@ const Login: React.FC<LoginProps> = ({ toggleView }) => {
   };
 
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={onSubmit} >
       <InputItem
         name="email"
         placeholder="email"

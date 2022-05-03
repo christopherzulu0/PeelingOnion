@@ -34,10 +34,10 @@ const PersonalHome: React.FC = () => {
           <Text fontSize="9pt">
             Your personal Peeling Onion frontpage, built for you.
           </Text>
-          <Button height="30px">Create Post</Button>
+          {/* <Button height="30px">Create Post</Button>
           <Button  bg="brand.100" height="30px">
             Create Community
-          </Button>
+          </Button> */}
         </Stack>
       </Flex>
     </Flex>

@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unescaped-entities */
 /* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
@@ -50,13 +51,15 @@ const AuthModal: React.FC<AuthModalProps> = () => {
   }, [user]);
 
   return (
-    <ModalWrapper isOpen={modalState.open} onClose={handleClose}>
-      
 
-      <ModalHeader display="flex" flexDirection="column" alignItems="center">
+    <ModalWrapper  isOpen={modalState.open} onClose={handleClose} >
+     
+
+      <ModalHeader display="flex" flexDirection="column" alignItems="center"    >
         {modalState.view === "login" && "Login"}
         {modalState.view === "signup" && "Sign Up"}
         {modalState.view === "resetPassword" && "Reset Password"}
+     
       </ModalHeader>
       <ModalCloseButton />
       <ModalBody
@@ -65,6 +68,7 @@ const AuthModal: React.FC<AuthModalProps> = () => {
         alignItems="center"
         justifyContent="center"
         pb={6}
+        className="form-bg-image"
       >
         <Flex
           direction="column"
