@@ -50,9 +50,8 @@ const AuthModal: React.FC<AuthModalProps> = () => {
   }, [user]);
 
   return (
- /*eslint-disable import/prefer-default-export */
     <ModalWrapper isOpen={modalState.open} onClose={handleClose}>
-      /*eslint-enable import/prefer-default-export */
+      
 
       <ModalHeader display="flex" flexDirection="column" alignItems="center">
         {modalState.view === "login" && "Login"}
