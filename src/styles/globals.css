@@ -26,6 +26,16 @@ a {
 .svg{
   font-size: 100px;
 }
+.bgcolor{
+  background-color: none;
+}
+
+@media (min-width:"1024px") {
+  #chakra-modal--body-31{
+    padding-left: 145px;
+  }
+  
+}
 /* .form-bg-image{
   background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8IK7hyuX4IIPEh6s_-Z9dcyyVnFg3Xl1g3Q&usqp=CAU");
   background-repeat: no-repeat;
