@@ -1,6 +1,8 @@
+/* eslint-disable react/jsx-no-undef */
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
+import ReactPlayer from 'react-player'
 import { ChatIcon } from '@chakra-ui/icons'
 import {
   Flex,
@@ -10,6 +12,15 @@ import {
   Spinner,
   Stack,
   Text,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Button,
+  useDisclosure,
 } from "@chakra-ui/react";
 import moment from "moment";
 import { NextRouter } from "next/router";
@@ -60,6 +71,7 @@ const PostItem: React.FC<PostItemContentProps> = ({
   const [loadingImage, setLoadingImage] = useState(true);
   const [loadingDelete, setLoadingDelete] = useState(false);
   const singlePostView = !onSelectPost; // function not passed to [pid]
+  const { isOpen, onOpen, onClose } = useDisclosure()
 
   const handleDelete = async (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -91,9 +103,7 @@ const PostItem: React.FC<PostItemContentProps> = ({
       borderRadius={singlePostView ? "4px 4px 0px 0px" : 4}
       cursor={singlePostView ? "unset" : "pointer"}
       _hover={{ borderColor: singlePostView ? "none" : "gray.500" }}
-      onClick={() =>
-        onSelectPost && post ? onSelectPost(post, postIdx!) : null
-      }
+     
     >
       <Flex
         direction="column"
@@ -136,7 +146,11 @@ const PostItem: React.FC<PostItemContentProps> = ({
   src='https://bit.ly/dan-abramov'
   alt='Dan Abramov'
 /> */}
-        <Stack spacing={1} p="10px 10px" bg="whiteAlpha.900" >
+        <Stack spacing={1} p="10px 10px" bg="whiteAlpha.900"
+         onClick={() =>
+          onSelectPost && post ? onSelectPost(post, postIdx!) : null
+        }
+        >
           {post.createdAt && (
             <Stack direction="row" spacing={0.6} align="center" fontSize="9pt">
               {homePage && (
@@ -167,10 +181,14 @@ const PostItem: React.FC<PostItemContentProps> = ({
               </Text>
             </Stack>
           )}
-          <Text fontSize="12pt" fontWeight={600}>
+          <Text fontSize="12pt" fontWeight={600}  onClick={() =>
+        onSelectPost && post ? onSelectPost(post, postIdx!) : null
+      }>
             {post.title}
           </Text>
-          <Text fontSize="10pt">{post.body}</Text>
+          <Text fontSize="10pt"  onClick={() =>
+        onSelectPost && post ? onSelectPost(post, postIdx!) : null
+      }>{post.body}</Text>
           {post.imageURL && (
             <Flex justify="center" align="center" p={2} >
               {loadingImage && (
@@ -197,7 +215,9 @@ const PostItem: React.FC<PostItemContentProps> = ({
             cursor="pointer"
             
           >
-            <ChatIcon mr={2}  />
+            <ChatIcon mr={2}   onClick={() =>
+        onSelectPost && post ? onSelectPost(post, postIdx!) : null
+      }/>
             <Text fontSize="9pt">{post.numberOfComments}</Text>
           </Flex>
           <Flex
@@ -230,6 +250,7 @@ const PostItem: React.FC<PostItemContentProps> = ({
             <Icon as={IoBookmarkOutline} mr={2} />
             <Text fontSize="9pt">Save</Text>
           </Flex>
+          
           {userIsCreator && (
             <Flex
               align="center"
@@ -249,7 +270,37 @@ const PostItem: React.FC<PostItemContentProps> = ({
               )}
             </Flex>
           )}
+           <Flex
+            align="center"
+            p="8px 10px"
+            borderRadius={4}
+            _hover={{ bg: "gray.200" }}
+            cursor="pointer"
+          >
+            
+         
+            <Button onClick={onOpen}  >
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+</svg>
+            </Button>
+           
+            
+
+<Modal closeOnOverlayClick={false} isOpen={isOpen} onClose={onClose} >
+  <ModalOverlay />
+  <ModalContent  height={360.4}>
+   
+    <ModalCloseButton className="modal-close-button"/>
+    <ModalBody pb={6}>
+    <ReactPlayer width={448}  className="player" url={post.video} />
+    </ModalBody>
+  </ModalContent>
+</Modal>
+          </Flex>
         </Flex>
+       
+
       </Flex>
     </Flex>
   );

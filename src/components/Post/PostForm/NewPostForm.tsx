@@ -38,10 +38,7 @@ const formTabs = [
     title: "Images",
     icon: IoImageOutline,
   },
-  {
-    title: "Link",
-    icon: BsLink45Deg,
-  },
+
   {
     title: "Poll",
     icon: BiPoll,
@@ -71,6 +68,7 @@ const NewPostForm: React.FC<NewPostFormProps> = ({
   const [selectedTab, setSelectedTab] = useState(formTabs[0].title);
   const [textInputs, setTextInputs] = useState({
     title: "",
+    video:"",
     body: "",
   });
   const [selectedFile, setSelectedFile] = useState<string>();
@@ -82,7 +80,7 @@ const NewPostForm: React.FC<NewPostFormProps> = ({
 
   const handleCreatePost = async () => {
     setLoading(true);
-    const { title, body } = textInputs;
+    const { title,video, body } = textInputs;
     try {
       const postDocRef = await addDoc(collection(firestore, "posts"), {
         communityId,
@@ -90,6 +88,7 @@ const NewPostForm: React.FC<NewPostFormProps> = ({
         creatorId: user.uid,
         userDisplayText: user.email!.split("@")[0],
         title,
+        video,
         body,
         numberOfComments: 0,
         voteStatus: 0,
@@ -166,6 +165,9 @@ const NewPostForm: React.FC<NewPostFormProps> = ({
             loading={loading}
           />
         )}
+
+
+
         {selectedTab === "Images" && (
           <ImageUpload
             selectedFile={selectedFile}
@@ -175,6 +177,16 @@ const NewPostForm: React.FC<NewPostFormProps> = ({
             onSelectImage={onSelectImage}
           />
         )}
+
+{/* <Flex p={4}>
+        {selectedTab === "Link" && (
+          <TextInputs
+            textInputs={textInputs}
+            onChange={onTextChange}
+            handleCreatePost={handleCreatePost}
+            loading={loading}
+          />
+        )} */}
       </Flex>
     </Flex>
   );

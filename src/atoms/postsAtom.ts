@@ -8,6 +8,7 @@ export type Post = {
   userDisplayText: string; // change to authorDisplayText
   creatorId: string;
   title: string;
+  video: string;
   body: string;
   numberOfComments: number;
   voteStatus: number;

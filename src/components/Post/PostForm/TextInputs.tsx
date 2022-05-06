@@ -4,6 +4,7 @@ import { Stack, Input, Textarea, Flex, Button } from "@chakra-ui/react";
 type TextInputsProps = {
   textInputs: {
     title: string;
+   video:string;
     body: string;
   };
   onChange: (
@@ -35,6 +36,22 @@ const TextInputs: React.FC<TextInputsProps> = ({
         fontSize="10pt"
         borderRadius={4}
         placeholder="Title"
+      />
+       <Input
+        name="video"
+        value={textInputs.video}
+        onChange={onChange}
+       
+        _placeholder={{ color: "gray.500" }}
+        _focus={{
+          outline: "none",
+          bg: "white",
+          border: "1px solid",
+          borderColor: "black",
+        }}
+        fontSize="10pt"
+        borderRadius={4}
+        placeholder="Video link here"
       />
       <Textarea
         name="body"

@@ -13,6 +13,19 @@ a {
 * {
   box-sizing: border-box;
 }
+.player{
+  margin-left: -23.6px;
+  margin-top: -7.9px;
+  
+}
+.modal-close-button{
+  color:white;
+  margin-top: -12px;
+  margin-right: -12px;
+}
+.svg{
+  font-size: 100px;
+}
 /* .form-bg-image{
   background: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ8IK7hyuX4IIPEh6s_-Z9dcyyVnFg3Xl1g3Q&usqp=CAU");
   background-repeat: no-repeat;
