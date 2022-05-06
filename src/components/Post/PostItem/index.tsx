@@ -2,7 +2,7 @@
 /* eslint-disable @next/next/link-passhref */
 /* eslint-disable jsx-a11y/alt-text */
 import React, { useState } from "react";
-import ReactPlayer from 'react-player'
+import ReactPlayer from 'react-player/lazy'
 import { ChatIcon } from '@chakra-ui/icons'
 import {
   Flex,
@@ -185,6 +185,7 @@ const PostItem: React.FC<PostItemContentProps> = ({
         onSelectPost && post ? onSelectPost(post, postIdx!) : null
       }>
             {post.title}
+         
           </Text>
           <Text fontSize="10pt"  onClick={() =>
         onSelectPost && post ? onSelectPost(post, postIdx!) : null
@@ -205,7 +206,11 @@ const PostItem: React.FC<PostItemContentProps> = ({
               />
             </Flex>
           )}
+
+
         </Stack>
+
+      
         <Flex ml={1} mb={0.5} color="gray.500" fontWeight={600} bg="whiteAlpha.900">
           <Flex
             align="center"
@@ -240,7 +245,7 @@ const PostItem: React.FC<PostItemContentProps> = ({
             <Text fontSize="9pt">Share</Text>
             </RWebShare>
           </Flex>
-          <Flex
+          {/* <Flex
             align="center"
             p="8px 10px"
             borderRadius={4}
@@ -249,7 +254,7 @@ const PostItem: React.FC<PostItemContentProps> = ({
           >
             <Icon as={IoBookmarkOutline} mr={2} />
             <Text fontSize="9pt">Save</Text>
-          </Flex>
+          </Flex> */}
           
           {userIsCreator && (
             <Flex
@@ -288,8 +293,8 @@ const PostItem: React.FC<PostItemContentProps> = ({
   <ModalContent  >
    
     <ModalCloseButton className="modal-close-button"/>
-    <ModalBody pb={6}>
-    <ReactPlayer   className="player" url={post.video} />
+    <ModalBody id="player">
+    <ReactPlayer style={{marginLeft:"-25px"}} width={448} height={300}  url={post.video} />
     </ModalBody>
   </ModalContent>
 </Modal>

@@ -30,9 +30,10 @@ a {
   background-color: none;
 }
 
-@media (min-width:"1024px") {
-  #chakra-modal--body-31{
-    padding-left: 145px;
+@media (max-width:"1024px") {
+  #player{
+   width:2000px;
+  
   }
   
 }
