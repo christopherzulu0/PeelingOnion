@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/alt-text */
 import React from "react";
 import { Box, Flex, Image } from "@chakra-ui/react";
 import { User } from "firebase/auth";
@@ -13,7 +14,7 @@ import RightContent from "./RightContent";
 import SearchInput from "./SearchInput";
 import router from "next/router";
 import useDirectory from "../../hooks/useDirectory";
-
+// import DarkModeSwitch from '../../components/DarkModeSwitch'
 const Navbar: React.FC = () => {
   const [user] = useAuthState(auth);
 
@@ -35,12 +36,7 @@ const Navbar: React.FC = () => {
         onClick={() => onSelectMenuItem(defaultMenuItem)}
       >
         <Image src="/images/pan3.jpg" height="45px" />
-        <Image
-          display={{ base: "none", md: "unset" }}
-          src="/images/logo.jpg"
-          height="45px"
-          margin="10px"
-        />
+        {/* <DarkModeSwitch/> */}
       </Flex>
       {user && <Directory />}
       <SearchInput user={user as User} />
